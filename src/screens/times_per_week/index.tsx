@@ -35,6 +35,7 @@ const TimesPerWeek = (props: NativeStackScreenProps<RootstackParamList, "TimesPe
 
     };
     const handler = () => {
+        ``
         if (isSelected) {
             props.navigation.navigate("TypicallyWorkout");
         } else {
@@ -49,30 +50,22 @@ const TimesPerWeek = (props: NativeStackScreenProps<RootstackParamList, "TimesPe
             <View style={{ height: "90%", width: "100%", backgroundColor: "white", marginTop: 100, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
 
                 <View style={{ alignItems: "center", marginTop: 20 }}>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>How many times per week do</Text>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>you usually workout?</Text>
+                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk" }}>How many times per week do</Text>
+                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk" }}>you usually workout?</Text>
 
-                    <Text style={{ color: "black", fontSize: 20 }}>Steps 4 of 5</Text>
+                    <Text style={{ color: "black", fontSize: 16, fontFamily: "Space Grotesk" }}>Steps 4 of 5</Text>
                     {WorkoutWeekly.map((goal, index) => (
                         <BaseTextInput key={index} label={goal} presshandler={() => handleGoalSelect((index + 1).toString())} isPressed={isPressed === (index + 1).toString()} />
                     ))}
 
                 </View>
 
+                <View style={{ alignItems: "center", flex: 1 }}>
+                    <BaseButton width={200} height={48} backkgroundColor={'black'} borderRadius={27} label={"Next"} color={"white"} pressHandler={handler} bottom={24}
 
 
-
-
-
-
-
-
-
-                <BaseButton width={154} height={54} backkgroundColor={'black'} borderRadius={20} label={"Next"} top={250} left={120} color={"white"} pressHandler={handler}
-
-
-
-                />
+                    />
+                </View>
             </View>
 
         </ImageBackground>

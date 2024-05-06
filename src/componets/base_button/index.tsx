@@ -10,11 +10,12 @@ type BaseButtonProps = {
     color: string;
     pressHandler: () => void;
     top?: number
+    bottom?: number
 }
 
 const BaseButton = (props: BaseButtonProps) => {
     return (
-        <View>
+        <View style={{ justifyContent: "flex-end", flex: 1 }}>
             <TouchableOpacity style={{
                 width: props.width,
                 height: props.height,
@@ -22,11 +23,13 @@ const BaseButton = (props: BaseButtonProps) => {
                 left: props.left,
                 // borderWidth: 2,
                 backgroundColor: props.backkgroundColor,
-                borderRadius: props.borderRadius
+                borderRadius: props.borderRadius,
+                bottom: props.bottom
+
 
 
             }} onPress={props.pressHandler}>
-                <Text style={{ color: props.color, fontSize: 20, textAlign: "center", paddingTop: 10, fontWeight: "600" }}>
+                <Text style={{ color: props.color, fontSize: 16, paddingTop: 12, fontWeight: "600", fontFamily: "Space Grotesk", alignSelf: "center" }}>
                     {props.label}
                 </Text>
             </TouchableOpacity>

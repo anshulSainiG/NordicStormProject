@@ -14,7 +14,7 @@ type BaseTextProps = {
 const BaseText = (props: BaseTextProps) => {
     return (
         <View style={{ width: props.width, height: props.height, borderWidth: props.borderWidth, alignSelf: "center", marginTop: 30 }}>
-            <Text style={{ fontSize: 20, color: "black", marginTop: 5, marginLeft: 10 }}>{props.label}</Text>
+            <Text style={{ fontSize: 16, color: "black", marginTop: 12, marginLeft: 16 }}>{props.label}</Text>
         </View>
 
     )

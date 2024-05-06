@@ -22,7 +22,7 @@ const PhoneTextField = (props: BaseTextFieldProps) => {
         <View>
             <View style={{ height: props.height, width: props.width, borderWidth: props.borderwidth, borderRadius: props.borderRadius, flexDirection: "row", justifyContent: "space-between" }}>
                 <TextInput
-                    placeholderTextColor={"#040404"}
+                    // placeholderTextColor={"#040404"}
                     placeholder={props.placeholder}
                     value={props.value}
                     onChangeText={props.onChangeText}
@@ -32,12 +32,12 @@ const PhoneTextField = (props: BaseTextFieldProps) => {
                 {
                     props.secureText ? (
 
-                        <TouchableOpacity onPress={props.secureHandler} style={{ marginRight: 10, marginTop: 5 }}>
-                            <FontAwesome name="eye-slash" size={25} color="black" />
+                        <TouchableOpacity onPress={props.secureHandler} style={{ alignSelf: "center", marginRight: 10 }}>
+                            <FontAwesome name="eye-slash" size={22} color="black" />
                         </TouchableOpacity>
                     ) : (
-                        <TouchableOpacity onPress={props.secureHandler} style={{ marginRight: 10, marginTop: 5 }}>
-                            <FontAwesome name="eye" size={25} color="black" />
+                        <TouchableOpacity onPress={props.secureHandler} style={{ marginRight: 10, alignSelf: "center" }}>
+                            <FontAwesome name="eye" size={22} color="black" />
                         </TouchableOpacity>
                     )
                 }

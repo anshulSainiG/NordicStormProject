@@ -12,6 +12,7 @@ type BaseTextFieldProps = {
     secureText: boolean;
     right?: React.ReactNode;
     validationText?: string;
+    left?: string;
 }
 
 const BaseTextField = (props: BaseTextFieldProps) => {
@@ -20,14 +21,16 @@ const BaseTextField = (props: BaseTextFieldProps) => {
             <TextInput
 
                 secureTextEntry={props.secureText}
-                placeholderTextColor={"black"}
+
                 placeholder={props.placeholder}
                 value={props.value}
                 onChangeText={props.onChangeText}
-                style={{ height: props.height, width: props.width, borderWidth: props.borderwidth, borderRadius: props.borderRadius, color: "black" }}
+                style={{ height: props.height, width: props.width, borderWidth: props.borderwidth, borderRadius: props.borderRadius, color: "black", marginLeft: props.left }}
 
 
             ></TextInput>
+
+
             {
                 props.validationText ?
                     <Text style={{ color: "red" }}>{props.validationText}</Text>

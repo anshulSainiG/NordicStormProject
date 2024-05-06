@@ -22,7 +22,7 @@ const Login = (props: NativeStackScreenProps<RootstackParamList, "Login">) => {
 
     useEffect(() => {
 
-    })
+    }, [])
 
 
 
@@ -107,10 +107,10 @@ const Login = (props: NativeStackScreenProps<RootstackParamList, "Login">) => {
         <ImageBackground style={{ flex: 1 }} source={require("../../assest/images/intial.png")} resizeMode="cover" >
             <View style={{ height: "90%", width: "100%", backgroundColor: "white", marginTop: 100, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                 <View style={{ alignItems: "center", marginTop: 20 }}>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>Log In</Text>
+                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk" }}>Log In</Text>
                     {/* <Text style={{ color: "black", fontSize: 20 }}>Create a new account</Text> */}
                 </View>
-                <View style={{ marginTop: 50, marginLeft: 25 }}>
+                <View style={{ marginTop: 50, alignItems: "center" }}>
 
                     <BaseTextField secureText={false} placeholder={'Email address'} value={emails}
                         onChangeText={(text: string) => {
@@ -123,40 +123,34 @@ const Login = (props: NativeStackScreenProps<RootstackParamList, "Login">) => {
                             setPasswords(text)
                             PasswordValidation(text)
                         }}
-                        height={50} width={343} borderwidth={1} validationText={passwordvalidation} secureHandler={SecureHandler} />
+                        height={48} width={343} borderwidth={1} validationText={passwordvalidation} secureHandler={SecureHandler} />
                     <View style={{ height: 20 }}></View>
                 </View>
+                <View style={{ flex: 1, alignItems: "center" }}>
+                    <BaseButton
+                        width={200}
+                        height={54}
+                        backkgroundColor={'black'}
+                        borderRadius={27}
+                        label={"Log In"}
+                        bottom={68}
 
-                <BaseButton
-                    width={154}
-                    height={54}
-                    backkgroundColor={'black'}
-                    borderRadius={20}
-                    label={"Log In"}
-                    top={200}
-                    left={120}
-                    color={"white"}
-                    pressHandler={() => {
-                        if (PasswordValidation(passwords)) {
-                            LoginIn(emails, passwords);
-                            if (datas == "success") {
-                                console.log("yes", datas);
-                                props.navigation.navigate("Dashboard", {
-                                    email: emails,
-                                    password: passwords
-                                });
+                        color={"white"}
+                        pressHandler={() => {
+                            if (PasswordValidation(passwords)) {
+                                console.log("fdfgfff", LoginIn(emails, passwords));
+
+                                LoginIn(emails, passwords);
+
+
+
+                            } else {
+                                Alert.alert("Please enter a field");
                             }
-                            else {
-                                Alert.alert("user does not exit")
-                            }
+                        }}
+                    />
 
-                        } else {
-                            Alert.alert("Please enter a field");
-                        }
-                    }}
-                />
-
-
+                </View>
 
 
 

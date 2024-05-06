@@ -35,13 +35,15 @@ const SelectMeasurement = (props: NativeStackScreenProps<RootstackParamList, "Se
         <ImageBackground style={{ flex: 1 }} source={require("../../assest/images/intial.png")} resizeMode="cover" >
             <View style={{ height: "90%", width: "100%", backgroundColor: "white", marginTop: 100, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                 <View style={{ alignItems: "center", marginTop: 20 }}>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>Select measurement system</Text>
-                    <Text style={{ color: "black", fontSize: 20 }}>Steps 2 of 5</Text>
+                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk" }}>Select measurement system</Text>
+                    <Text style={{ color: "black", fontSize: 16 }}>Steps 2 of 5</Text>
                     {WorkoutWeekly.map((goal, index) => (
                         <BaseTextInput key={index} label={goal} presshandler={() => handleGoalSelect((index + 1).toString())} isPressed={isPressed === (index + 1).toString()} />
                     ))}
                 </View>
-                <BaseButton width={154} height={54} backkgroundColor={'black'} borderRadius={20} label={"Next"} top={250} left={120} color={"white"} pressHandler={navigation} />
+                <View style={{ alignItems: "center", flex: 1 }}>
+                    <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={27} label={"Next"} color={"white"} pressHandler={navigation} bottom={24} />
+                </View>
             </View>
         </ImageBackground>
     )

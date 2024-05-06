@@ -25,30 +25,30 @@ export type RootstackParamList = {
     TimesPerWeek: undefined;
     TypicallyWorkout: undefined;
     Dashboardscreen: undefined;
-    Dashboard: { email: string, password: string };
+    Dashboard: undefined
 }
 
 const RootStack = createNativeStackNavigator<RootstackParamList>();
 
 const RootNavigation = () => {
     return (
-        <NavigationContainer>
-            <RootStack.Navigator screenOptions={{
-                headerShown: false
-            }}>
-                <RootStack.Screen name="IntialScreen" component={IntialScreen} />
-                <RootStack.Screen name="Login" component={Login} />
-                <RootStack.Screen name="Signup" component={Signup} />
-                <RootStack.Screen name="AboutYourSelf" component={AboutYourSelf} />
-                <RootStack.Screen name="SelectMeasurement" component={SelectMeasurement} />
-                <RootStack.Screen name="SelectYourTrainingGoals" component={SelectYourTrainingGoals} />
-                <RootStack.Screen name="TimesPerWeek" component={TimesPerWeek} />
-                <RootStack.Screen name="TypicallyWorkout" component={TypicallyWorkout} />
-                <RootStack.Screen name="Dashboardscreen" component={Dashboardscreen} />
-                <RootStack.Screen name="Dashboard" component={Dashboard} />
 
-            </RootStack.Navigator>
-        </NavigationContainer>
+        <RootStack.Navigator screenOptions={{
+            headerShown: false
+        }}>
+            <RootStack.Screen name="IntialScreen" component={IntialScreen} />
+            <RootStack.Screen name="Login" component={Login} />
+            <RootStack.Screen name="Signup" component={Signup} />
+            <RootStack.Screen name="AboutYourSelf" component={AboutYourSelf} />
+            <RootStack.Screen name="SelectMeasurement" component={SelectMeasurement} />
+            <RootStack.Screen name="SelectYourTrainingGoals" component={SelectYourTrainingGoals} />
+            <RootStack.Screen name="TimesPerWeek" component={TimesPerWeek} />
+            <RootStack.Screen name="TypicallyWorkout" component={TypicallyWorkout} />
+            <RootStack.Screen name="Dashboardscreen" component={Dashboardscreen} />
+            <RootStack.Screen name="Dashboard" component={Dashboard} />
+
+        </RootStack.Navigator>
+
     );
 }
 

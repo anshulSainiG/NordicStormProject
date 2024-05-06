@@ -109,44 +109,48 @@ const Signup = (props: NativeStackScreenProps<RootstackParamList, "Signup">) => 
         <ImageBackground style={{ flex: 1 }} source={require("../../assest/images/intial.png")} resizeMode="cover" >
             <View style={{ height: "90%", width: "100%", backgroundColor: "white", marginTop: 100, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                 <View style={{ alignItems: "center", marginTop: 20 }}>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>Sign up</Text>
-                    <Text style={{ color: "black", fontSize: 20 }}>Create a new account</Text>
+                    <Text style={{
+                        color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk"
+                    }}>Sign up</Text>
+                    <Text style={{ color: "black", fontSize: 16, fontFamily: "Space Grotesk" }}>Create a new account</Text>
                 </View>
                 <View style={{ marginTop: 50, marginLeft: 25 }}>
                     <BaseTextField secureText={false} placeholder={'Full Name'} value={names}
                         onChangeText={(text: string) => {
                             nameHandler(text);
                             nameValidation(text);
-                        }} height={50} width={343} borderwidth={1} validationText={namevalidation} />
+                        }} height={48} width={343} borderwidth={1} validationText={namevalidation} />
                     <View style={{ height: 20 }}></View>
                     <BaseTextField secureText={false} placeholder={'Email address'} value={emails}
                         onChangeText={(text: string) => {
                             emailHandler(text)
                             emailValidation(text)
-                        }} height={50} width={343} borderwidth={1} validationText={emailvalidation} />
+                        }} height={48} width={343} borderwidth={1} validationText={emailvalidation} />
                     <View style={{ height: 20 }}></View>
                     <PhoneTextField secureText={secureText} placeholder={'Password'} value={passwords}
                         onChangeText={(text: string) => {
                             passwordHandler(text)
                             PasswordValidation(text)
                         }}
-                        height={50} width={343} borderwidth={1} validationText={passwordvalidation} secureHandler={SecureHandler} />
+                        height={48} width={343} borderwidth={1} validationText={passwordvalidation} secureHandler={SecureHandler} />
                     <View style={{ height: 20 }}></View>
                 </View>
-                <BaseButton width={154} height={54} backkgroundColor={'black'} borderRadius={20} label={"Sign Up"} top={200} left={120} color={"white"}
-                    pressHandler={() => {
-                        if (PasswordValidation(passwords)) {
+                <View style={{ alignItems: "center", flex: 1 }}>
+                    <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={27} label={"Sign Up"} bottom={68} color={"white"}
+                        pressHandler={() => {
+                            if (PasswordValidation(passwords)) {
 
-                            props.navigation.navigate("AboutYourSelf", {
-                                name: names
-                            })
-                        }
-                        else {
-                            Alert.alert("enter the field")
-                        }
-                    }}
+                                props.navigation.navigate("AboutYourSelf", {
+                                    name: names
+                                })
+                            }
+                            else {
+                                Alert.alert("enter the field")
+                            }
+                        }}
 
-                />
+                    />
+                </View>
             </View>
         </ImageBackground>
     )

@@ -14,7 +14,7 @@ import { AppContext } from '../../context';
 const TypicallyWorkout = (props: NativeStackScreenProps<RootstackParamList, "TypicallyWorkout">) => {
     const { handleWorkoutTypically, SignUp, names, emails, passwords, measurementSystem, gender, height, selectedDate, weight, workoutweekly,
         status } = useContext(AppContext)
-    console.log("meas===>", WorkoutWeekly);
+    console.log("meas===>", measurementSystem);
     console.log("=========>", status);
 
 
@@ -55,10 +55,10 @@ const TypicallyWorkout = (props: NativeStackScreenProps<RootstackParamList, "Typ
             <View style={{ height: "90%", width: "100%", backgroundColor: "white", marginTop: 100, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
 
                 <View style={{ alignItems: "center", marginTop: 20 }}>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>How long do u typically</Text>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>prefer to workout?</Text>
+                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk" }}>How long do u typically</Text>
+                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk" }}>prefer to workout?</Text>
 
-                    <Text style={{ color: "black", fontSize: 20 }}>Steps 5 of 5</Text>
+                    <Text style={{ color: "black", fontSize: 16, fontFamily: "Space Grotesk" }}>Steps 5 of 5</Text>
 
                 </View>
 
@@ -72,12 +72,11 @@ const TypicallyWorkout = (props: NativeStackScreenProps<RootstackParamList, "Typ
 
 
 
+                <View style={{ alignItems: "center", flex: 1 }}>
+                    <BaseButton width={200} height={48} backkgroundColor={'black'} borderRadius={27} label={"Get Started"} color={"white"} pressHandler={handler} bottom={24} />
 
-                <BaseButton width={154} height={54} backkgroundColor={'black'} borderRadius={20} label={"Get Started"} top={250} left={120} color={"white"} pressHandler={handler}
 
-
-
-                />
+                </View>
             </View>
 
         </ImageBackground>

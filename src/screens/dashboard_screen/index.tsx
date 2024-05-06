@@ -26,6 +26,21 @@ const Dashboardscreen = () => {
             return <Text>"More than 30 mins"</Text>;
         }
     };
+    const goal = () => {
+        if (goals === "12") {
+            return <Text>"Loose Weight"</Text>;
+        } else if (goals === "13") {
+            return <Text>"Improve cardio"</Text>;
+        } else if (goals === "17") {
+            return <Text>"Improove Balance and Body Control"</Text>;
+        }
+        else if (goals === "16") {
+
+        }
+        else if (goals === "17") {
+
+        }
+    };
 
 
     return (
@@ -38,7 +53,7 @@ const Dashboardscreen = () => {
             <Text>height:{datas.height}</Text>
             <Text>weight:{datas.weight}</Text>
             <Text>measurement:{measurementSystem == "1" ? "Metric(m, cm, km, kg)" : "Us Standard(li)"}</Text>
-            <Text>goals:{goals}</Text>
+            <Text>goals:{datas.goal}</Text>
             <Text>workoutweekly:{workoutWeekly()}</Text>
             <Text>workouttypically:{workoutTypiclly()}</Text>
         </View>

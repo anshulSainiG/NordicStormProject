@@ -53,27 +53,29 @@ const AboutYourSelf = (props: NativeStackScreenProps<RootstackParamList, "AboutY
         <ImageBackground style={{ flex: 1 }} source={require("../../assest/images/intial.png")} resizeMode="cover" >
             <View style={{ height: "90%", width: "100%", backgroundColor: "white", marginTop: 100, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                 <View style={{ alignItems: "center", marginTop: 20 }}>
-                    <Text style={{ color: "black", fontSize: 20, fontWeight: "bold" }}>Tell us a bit about yourself</Text>
-                    <Text style={{ color: "black", fontSize: 20 }}>Steps 1 of 5</Text>
+                    <Text style={{
+                        color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk"
+                    }}>Tell us a bit about yourself</Text>
+                    <Text style={{ color: "black", fontSize: 16, fontFamily: "Space Grotesk" }}>Steps 1 of 5</Text>
                 </View>
-                <BaseText label={name} width={350} height={50} borderWidth={1} dropDownMenu={dropDownMenu} />
-                <View style={{ width: 350, height: 50, borderWidth: 1, alignSelf: "center", marginTop: 30, flexDirection: "row", justifyContent: "space-between" }}>
-                    <Text style={{ fontSize: 20, color: "black", marginTop: 5, marginLeft: 10 }}>{gender}</Text>
+                <BaseText label={name} width={343} height={48} borderWidth={1} dropDownMenu={dropDownMenu} />
+                <View style={{ width: 343, height: 48, borderWidth: 1, alignSelf: "center", marginTop: 30, flexDirection: "row", justifyContent: "space-between" }}>
+                    <Text style={{ fontSize: 16, color: "black", marginTop: 10, marginLeft: 16 }}>{gender}</Text>
                     <TouchableOpacity onPress={() => setGenderModal(!gendermodal)}>
-                        <AntDesign name="down" size={25} color="black" style={{ marginRight: 10, marginTop: 5 }} />
+                        <AntDesign name="down" size={15} color="black" style={{ marginRight: 10, marginTop: 18 }} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ width: 350, height: 50, borderWidth: 1, alignSelf: "center", marginTop: 30, flexDirection: "row", justifyContent: "space-between" }}>
-                    <Text style={{ fontSize: 20, marginTop: 5, marginLeft: 10, color: "black" }}>{selectedDate}</Text>
+                <View style={{ width: 343, height: 48, borderWidth: 1, alignSelf: "center", marginTop: 30, flexDirection: "row", justifyContent: "space-between" }}>
+                    <Text style={{ fontSize: 16, marginTop: 10, marginLeft: 16, color: "black" }}>{selectedDate}</Text>
                     <TouchableOpacity onPress={() => setCalenderModal(true)}>
-                        <Image source={require("../../assest/images/calendaricon.png")} style={{ marginRight: 10, marginTop: 10 }} />
+                        <Image source={require("../../assest/images/calendaricon.png")} style={{ marginRight: 10, marginTop: 15, height: 20, tintColor: "black" }} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ marginTop: 25, marginLeft: 20 }}>
-                    <View style={{ width: "95%", height: 50, borderWidth: 1, flexDirection: 'row', borderColor: "black" }}>
+                <View style={{ marginTop: 25 }}>
+                    <View style={{ width: 343, height: 48, borderWidth: 1, flexDirection: 'row', borderColor: "black", paddingLeft: 16, alignSelf: "center" }}>
 
-                        <BaseTextField placeholder={"Height"} value={height} onChangeText={(text) => handleHeightChange(text)} height={50} width={320} secureText={false} />
-                        <Text style={{ marginTop: 10, color: "black", fontWeight: "bold", fontSize: 18 }}>cm</Text>
+                        <BaseTextField placeholder={"Height"} value={height} onChangeText={(text) => handleHeightChange(text)} height={48} width={300} secureText={false} />
+                        <Text style={{ marginTop: 10, color: "black", fontWeight: "bold", fontSize: 16, fontFamily: "Space Grotesk" }}>cm</Text>
                     </View>
                 </View>
                 <CalendarModal visible={calendermodal} onClose={() => setCalenderModal(false)} onSelectDate={handleDateSelect} />
@@ -81,17 +83,19 @@ const AboutYourSelf = (props: NativeStackScreenProps<RootstackParamList, "AboutY
 
                 <GenderModal visible={gendermodal} onClose={() => setGenderModal(false)} onSelectDate={handleGenderSelect} />
 
-                <View style={{ marginTop: 25, marginLeft: 20 }}>
-                    <View style={{ width: "95%", height: 50, borderWidth: 1, flexDirection: 'row', borderColor: "black" }}>
-
-                        <BaseTextField placeholder={"Weight"} value={weight} onChangeText={(text) => handleWeightChange(text)} height={50} width={320} secureText={false} />
-                        <Text style={{ marginTop: 10, color: "black", fontWeight: "bold", fontSize: 18 }}>kg</Text>
+                <View style={{ marginTop: 25, alignSelf: "center" }}>
+                    {/* <View style={{ width: "95%", height: 50, borderWidth: 1, flexDirection: 'row', borderColor: "black" }}> */}
+                    <View style={{ width: 343, height: 48, borderWidth: 1, flexDirection: "row", paddingLeft: 16 }}>
+                        <BaseTextField placeholder={"Weight"} value={weight} onChangeText={(text) => handleWeightChange(text)} height={48} width={300} secureText={false} />
+                        <Text style={{ marginTop: 10, color: "black", fontWeight: "bold", fontSize: 16, fontFamily: "Space Grotesk" }}>kg</Text>
                     </View>
                 </View>
+                <View style={{ alignItems: "center", flex: 1 }}>
 
-                <BaseButton width={154} height={54} backkgroundColor={'black'} borderRadius={20} label={"Next"} top={100} left={120} color={"white"} pressHandler={handler} />
-
+                    <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={30} label={"Next"} bottom={24} color={"white"} pressHandler={handler} />
+                </View>
             </View>
+            {/* </View> */}
         </ImageBackground>
 
 
