@@ -9,16 +9,19 @@ import { AppContext } from '../../context';
 const SelectYourTrainingGoals = (props: NativeStackScreenProps<RootstackParamList, "SelectYourTrainingGoals">) => {
     const { handleGoals } = useContext(AppContext);
     const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
+    console.log("+++++++++", selectedGoals);
+    selectedGoals.sort()
+
 
     handleGoals(selectedGoals.join())
     console.log("=====", handleGoals);
 
 
     const goals = [
-        { id: 1, title: "Loose Weight" },
-        { id: 2, title: "Improve Cardio" },
-        { id: 3, title: "Improve Balance and Body Control" },
-        { id: 4, title: "Rather not say" },
+        { id: 12, title: "Loose Weight" },
+        { id: 13, title: "Improve Cardio" },
+        { id: 14, title: "Improve Balance and Body Control" },
+        { id: 16, title: "Rather not say" },
     ];
 
     const handleGoalSelect = (id: number) => {

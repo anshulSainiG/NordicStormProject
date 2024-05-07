@@ -195,7 +195,7 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
             age: "",
             gender: gender,
             weight: weight,
-            trainingGoal: "12",
+            trainingGoal: goals,
             workoutFrequency: workoutweekly,
             workoutFrequencyType: "2",
             workoutDuration: workouttypically,
