@@ -25,18 +25,26 @@ const SelectYourTrainingGoals = (props: NativeStackScreenProps<RootstackParamLis
     ];
 
     const handleGoalSelect = (id: number) => {
-        const isSelected = selectedGoals.includes(id.toString());
-        console.log("isselected", isSelected);
-
-        let updatedGoals;
-
-        if (isSelected) {
-            updatedGoals = selectedGoals.filter(selectedGoal => selectedGoal !== id.toString());
-        } else {
-            updatedGoals = [...selectedGoals, id.toString()];
+        if (id === 16) {
+            setSelectedGoals([])
         }
-        console.log("updated", updatedGoals)
-        setSelectedGoals(updatedGoals);
+
+
+
+        else {
+            const isSelected = selectedGoals.includes(id.toString());
+            console.log("isselected", isSelected);
+
+            let updatedGoals;
+            if (isSelected) {
+                updatedGoals = selectedGoals.filter(selectedGoal => selectedGoal !== id.toString());
+
+            } else {
+                updatedGoals = [...selectedGoals, id.toString()];
+            }
+            console.log("updated", updatedGoals)
+            setSelectedGoals(updatedGoals);
+        }
     };
 
     const handler = () => {

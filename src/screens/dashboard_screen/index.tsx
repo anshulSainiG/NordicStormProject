@@ -1,19 +1,25 @@
-import { useContext } from "react";
-import { Text, View } from "react-native";
+import React, { useContext, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { AppContext } from "../../context";
 
 const Dashboardscreen = () => {
     const { workouttypically, workoutweekly, datas, gender, selectedDate, height, weight, measurementSystem, goals } = useContext(AppContext);
+    const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
+    console.log("fffselected", selectedGoals);
     console.log("datas", datas);
 
     const renderGoals = () => {
         const goalsArray = goals.split(',').map(goal => goal.trim());
-        console.log("golasArray", goalsArray);
+        console.log("goalsArray", goalsArray);
 
         return goalsArray.map((goal, index) => (
-            <Text key={index}>{getGoalText(goal)}</Text>
+            <TouchableOpacity key={index} >
+                <Text>{getGoalText(goal)}</Text>
+            </TouchableOpacity>
         ));
     };
+
+
 
     const getGoalText = (goal: string) => {
         switch (goal) {
@@ -52,9 +58,9 @@ const Dashboardscreen = () => {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: "center" }}>
-            <Text style={{ color: "black" }}>name: {datas.name}</Text>
+            <Text>name: {datas.name}</Text>
             <Text>selectedDate: {datas.email}</Text>
-            <Text style={{ color: "black" }}>gender: {datas.gender}</Text>
+            <Text>gender: {datas.gender}</Text>
             <Text>dob: {datas.dob}</Text>
             <Text>height: {datas.height}</Text>
             <Text>weight: {datas.weight}</Text>
