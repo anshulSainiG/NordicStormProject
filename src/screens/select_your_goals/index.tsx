@@ -1,21 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, ImageBackground, Alert } from 'react-native';
 import BaseButton from '../../componets/base_button';
-import BaseTextInput from '../../componets/base_text_input';
+import BaseTextInput from '../../componets/expandable_lists';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootstackParamList } from '../../navigation';
 import { AppContext } from '../../context';
+import ExpandableList from '../../componets/expandable_lists';
 
 const SelectYourTrainingGoals = (props: NativeStackScreenProps<RootstackParamList, "SelectYourTrainingGoals">) => {
     const { handleGoals } = useContext(AppContext);
     const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
-    console.log("+++++++++", selectedGoals);
-    selectedGoals.sort()
+    const [selectedOption, setSelectedOption] = useState<number | null>(null);
+    console.log("selectedGoals", selectedGoals);
 
-
-    handleGoals(selectedGoals.join())
-    console.log("=====", handleGoals);
-
+    handleGoals(selectedGoals.join(""))
 
     const goals = [
         { id: 12, title: "Loose Weight" },
@@ -26,32 +24,26 @@ const SelectYourTrainingGoals = (props: NativeStackScreenProps<RootstackParamLis
 
     const handleGoalSelect = (id: number) => {
         if (id === 16) {
-            setSelectedGoals([])
-        }
-
-
-
-        else {
+            setSelectedGoals([]);
+            setSelectedOption(id);
+        } else {
             const isSelected = selectedGoals.includes(id.toString());
-            console.log("isselected", isSelected);
-
             let updatedGoals;
             if (isSelected) {
                 updatedGoals = selectedGoals.filter(selectedGoal => selectedGoal !== id.toString());
-
+                setSelectedOption(null);
             } else {
                 updatedGoals = [...selectedGoals, id.toString()];
+                setSelectedOption(id);
+
+
             }
-            console.log("updated", updatedGoals)
             setSelectedGoals(updatedGoals);
         }
     };
 
     const handler = () => {
         if (selectedGoals.length > 0) {
-
-            console.log("ggggdgdddd====>", selectedGoals);
-
             props.navigation.navigate("TimesPerWeek");
         } else {
             Alert.alert(
@@ -71,15 +63,15 @@ const SelectYourTrainingGoals = (props: NativeStackScreenProps<RootstackParamLis
                 </View>
 
                 {goals.map((goal) => (
-                    <BaseTextInput
+                    <ExpandableList
                         key={goal.id}
                         label={goal.title}
-                        presshandler={() => handleGoalSelect(goal.id)} // Passing id directly
-                        isPressed={selectedGoals.includes(goal.id.toString())}
+                        presshandler={() => handleGoalSelect(goal.id)}
+                        isPressed={goal.id === selectedOption || selectedGoals.includes(goal.id.toString())}
                     />
                 ))}
 
-                <View style={{ alignItems: "center", flex: 1 }}>
+                <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
                     <BaseButton
                         width={200}
                         height={54}

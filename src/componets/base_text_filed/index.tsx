@@ -10,9 +10,9 @@ type BaseTextFieldProps = {
     borderwidth?: number;
     borderRadius?: number;
     secureText: boolean;
-    right?: React.ReactNode;
     validationText?: string;
     left?: string;
+    keyboardType?: any;
 }
 
 const BaseTextField = (props: BaseTextFieldProps) => {
@@ -21,7 +21,7 @@ const BaseTextField = (props: BaseTextFieldProps) => {
             <TextInput
 
                 secureTextEntry={props.secureText}
-
+                keyboardType={props.keyboardType}
                 placeholder={props.placeholder}
                 value={props.value}
                 onChangeText={props.onChangeText}

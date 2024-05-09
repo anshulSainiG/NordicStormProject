@@ -6,10 +6,11 @@ import PhoneTextField from '../../componets/phone_text_field';
 import { useRoute } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import BaseText from '../../componets/base_text';
-import BaseTextInput from '../../componets/base_text_input';
+import BaseTextInput from '../../componets/expandable_lists';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootstackParamList } from '../../navigation';
 import { AppContext } from '../../context';
+import ExpandableList from '../../componets/expandable_lists';
 
 const TimesPerWeek = (props: NativeStackScreenProps<RootstackParamList, "TimesPerWeek">) => {
     const { handleWorkout } = useContext(AppContext)
@@ -24,7 +25,7 @@ const TimesPerWeek = (props: NativeStackScreenProps<RootstackParamList, "TimesPe
     console.log("====>", selectedGoals);
 
     const [isPressed, setisPresses] = useState<string>("")
-    const WorkoutWeekly = ["Once a week", "3-5", "3-7"]
+    const WorkoutWeekly = ["Once a week", "3-5", "5-7"]
 
 
     const handleGoalSelect = (id: string) => {
@@ -55,12 +56,12 @@ const TimesPerWeek = (props: NativeStackScreenProps<RootstackParamList, "TimesPe
 
                     <Text style={{ color: "black", fontSize: 16, fontFamily: "Space Grotesk" }}>Steps 4 of 5</Text>
                     {WorkoutWeekly.map((goal, index) => (
-                        <BaseTextInput key={index} label={goal} presshandler={() => handleGoalSelect((index + 1).toString())} isPressed={isPressed === (index + 1).toString()} />
+                        <ExpandableList key={index} label={goal} presshandler={() => handleGoalSelect((index + 1).toString())} isPressed={isPressed === (index + 1).toString()} />
                     ))}
 
                 </View>
 
-                <View style={{ alignItems: "center", flex: 1 }}>
+                <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
                     <BaseButton width={200} height={48} backkgroundColor={'black'} borderRadius={27} label={"Next"} color={"white"} pressHandler={handler} bottom={24}
 
 

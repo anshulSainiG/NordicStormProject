@@ -18,6 +18,8 @@ const Login = (props: NativeStackScreenProps<RootstackParamList, "Login">) => {
     const [emailvalidation, setEmailValidation] = React.useState<string>("")
     const [passwordvalidation, setPasswordValidation] = React.useState<string>("")
     const { LoginIn, datas, setDatas } = useContext(AppContext)
+    const [buttonDisable, setButtonDisable] = React.useState(false)
+    const [emailhandler, setEmailhandler] = React.useState<boolean>(false);
     console.log("data=======+++++++++++++++>", datas);
 
     useEffect(() => {
@@ -38,32 +40,26 @@ const Login = (props: NativeStackScreenProps<RootstackParamList, "Login">) => {
 
 
 
-    const confirmSecureHandler = () => {
-        setConfirmSecureText(!confirmSecureText);
-    }
-    const nameValidation = (text: string) => {
-        if (text.length === 1) {
-            setNameValidation('Please enter your fullname');
-        } else if (text.length == 2) {
-            setNameValidation('Name should be more than 2 characters');
-        } else if (text.length >= 50) {
-            setNameValidation('Name should be less than 50 characters');
-        } else {
-            setNameValidation('');
-        }
-    };
+
+
     const emailValidation = (text: string) => {
-        const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+
+        const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,}$/;
+
         if (text.length > 0) {
             if (!EMAIL_REGEX.test(text)) {
                 setEmailValidation('Invalid email format');
-                console.log('Invalid email format');
             } else {
                 setEmailValidation('');
             }
         } else {
+            Alert.alert("enter the names")
             setEmailValidation('');
         }
+        setButtonDisable(true)
+        setEmailhandler(text.trim().length > 0)
+
     };
 
 
@@ -90,8 +86,9 @@ const Login = (props: NativeStackScreenProps<RootstackParamList, "Login">) => {
         }
         else {
             setPasswordValidation("")
-        }
 
+        }
+        setButtonDisable(true)
         console.log("pass", passwordvalidation);
         return hasMinimumLength && hasLetter && hasNumber;
     };
@@ -126,28 +123,31 @@ const Login = (props: NativeStackScreenProps<RootstackParamList, "Login">) => {
                         height={48} width={343} borderwidth={1} validationText={passwordvalidation} secureHandler={SecureHandler} />
                     <View style={{ height: 20 }}></View>
                 </View>
-                <View style={{ flex: 1, alignItems: "center" }}>
+                <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-end" }}>
                     <BaseButton
                         width={200}
                         height={54}
                         backkgroundColor={'black'}
                         borderRadius={27}
                         label={"Log In"}
-                        bottom={68}
+                        bottom={20}
+
 
                         color={"white"}
                         pressHandler={() => {
-                            if (PasswordValidation(passwords)) {
-                                console.log("fdfgfff", LoginIn(emails, passwords));
+                            if (PasswordValidation(passwords) && emailvalidation === "" && emailhandler) {
 
                                 LoginIn(emails, passwords);
-
-
-
-                            } else {
-                                Alert.alert("Please enter a field");
+                            } else if (passwords.length === 0) {
+                                Alert.alert("Password is empty");
+                            } else if (emailvalidation === "") {
+                                Alert.alert("Email is empty");
+                            }
+                            else {
+                                Alert.alert("Enter the valid information");
                             }
                         }}
+
                     />
 
                 </View>

@@ -5,7 +5,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootstackParamList } from '../../navigation';
 import { AppContext } from '../../context';
-import BaseText from '../../componets/base_text';
 import CalendarModal from '../../componets/calenders'; // Assuming CalendarModal is your static calendar modal component
 import BaseButton from '../../componets/base_button';
 import BaseTextField from '../../componets/base_text_filed';
@@ -37,14 +36,17 @@ const AboutYourSelf = (props: NativeStackScreenProps<RootstackParamList, "AboutY
         setGenderModal(false);
     };
     const handler = () => {
-        // Check if all fields are filled
+
         if (name && gender && selectedDate && height && weight) {
             props.navigation.navigate("SelectMeasurement");
         } else {
-            // Notify user to fill all fields
+
             Alert.alert("Please fill all fields before proceeding.");
         }
     };
+
+
+
 
 
     return (
@@ -58,7 +60,10 @@ const AboutYourSelf = (props: NativeStackScreenProps<RootstackParamList, "AboutY
                     }}>Tell us a bit about yourself</Text>
                     <Text style={{ color: "black", fontSize: 16, fontFamily: "Space Grotesk" }}>Steps 1 of 5</Text>
                 </View>
-                <BaseText label={name} width={343} height={48} borderWidth={1} dropDownMenu={dropDownMenu} />
+                <View style={{ width: 343, height: 48, borderWidth: 1, alignSelf: "center", marginTop: 10 }}>
+                    <Text style={{ fontSize: 16, color: "black", marginTop: 12, marginLeft: 16 }}>{name}</Text>
+                </View>
+                {/* <BaseText label={name} height={48} borderWidth={1} dropDownMenu={dropDownMenu} /> */}
                 <View style={{ width: 343, height: 48, borderWidth: 1, alignSelf: "center", marginTop: 30, flexDirection: "row", justifyContent: "space-between" }}>
                     <Text style={{ fontSize: 16, color: "black", marginTop: 10, marginLeft: 16 }}>{gender}</Text>
                     <TouchableOpacity onPress={() => setGenderModal(!gendermodal)}>
@@ -74,7 +79,7 @@ const AboutYourSelf = (props: NativeStackScreenProps<RootstackParamList, "AboutY
                 <View style={{ marginTop: 25 }}>
                     <View style={{ width: 343, height: 48, borderWidth: 1, flexDirection: 'row', borderColor: "black", paddingLeft: 16, alignSelf: "center" }}>
 
-                        <BaseTextField placeholder={"Height"} value={height} onChangeText={(text) => handleHeightChange(text)} height={48} width={300} secureText={false} />
+                        <BaseTextField keyboardType={"numeric"} placeholder={"Height"} value={height} onChangeText={(text) => handleHeightChange(text)} height={48} width={300} secureText={false} />
                         <Text style={{ marginTop: 10, color: "black", fontWeight: "bold", fontSize: 16, fontFamily: "Space Grotesk" }}>cm</Text>
                     </View>
                 </View>
@@ -86,14 +91,17 @@ const AboutYourSelf = (props: NativeStackScreenProps<RootstackParamList, "AboutY
                 <View style={{ marginTop: 25, alignSelf: "center" }}>
                     {/* <View style={{ width: "95%", height: 50, borderWidth: 1, flexDirection: 'row', borderColor: "black" }}> */}
                     <View style={{ width: 343, height: 48, borderWidth: 1, flexDirection: "row", paddingLeft: 16 }}>
-                        <BaseTextField placeholder={"Weight"} value={weight} onChangeText={(text) => handleWeightChange(text)} height={48} width={300} secureText={false} />
+                        <BaseTextField keyboardType={"numeric"} placeholder={"Weight"} value={weight} onChangeText={(text) => handleWeightChange(text)} height={48} width={300} secureText={false} />
                         <Text style={{ marginTop: 10, color: "black", fontWeight: "bold", fontSize: 16, fontFamily: "Space Grotesk" }}>kg</Text>
                     </View>
                 </View>
-                <View style={{ alignItems: "center", flex: 1 }}>
 
-                    <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={30} label={"Next"} bottom={24} color={"white"} pressHandler={handler} />
+
+                <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
+
+                    <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={30} label={"Next"} color={"white"} pressHandler={handler} bottom={24} />
                 </View>
+
             </View>
             {/* </View> */}
         </ImageBackground>

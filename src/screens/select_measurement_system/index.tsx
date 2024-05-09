@@ -1,10 +1,10 @@
 import { View, Text, ImageBackground, Alert } from 'react-native'
 import React, { useContext, useState } from 'react'
-import BaseTextInput from '../../componets/base_text_input'
 import BaseButton from '../../componets/base_button'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootstackParamList } from '../../navigation'
 import { AppContext } from '../../context'
+import ExpandableList from '../../componets/expandable_lists'
 
 const SelectMeasurement = (props: NativeStackScreenProps<RootstackParamList, "SelectMeasurement">) => {
     const { handleMeasurement } = useContext(AppContext);
@@ -38,10 +38,10 @@ const SelectMeasurement = (props: NativeStackScreenProps<RootstackParamList, "Se
                     <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", fontFamily: "Space Grotesk" }}>Select measurement system</Text>
                     <Text style={{ color: "black", fontSize: 16 }}>Steps 2 of 5</Text>
                     {WorkoutWeekly.map((goal, index) => (
-                        <BaseTextInput key={index} label={goal} presshandler={() => handleGoalSelect((index + 1).toString())} isPressed={isPressed === (index + 1).toString()} />
+                        <ExpandableList key={index} label={goal} presshandler={() => handleGoalSelect((index + 1).toString())} isPressed={isPressed === (index + 1).toString()} />
                     ))}
                 </View>
-                <View style={{ alignItems: "center", flex: 1 }}>
+                <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
                     <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={27} label={"Next"} color={"white"} pressHandler={navigation} bottom={24} />
                 </View>
             </View>

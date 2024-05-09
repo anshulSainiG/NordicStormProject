@@ -94,6 +94,8 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [selectedDate, setSelectedDate] = useState<string>("Birthdate");
     const [measurementSystem, setMeasurementSystem] = useState<string>("");
     const [goals, setGoals] = useState<string>("12");
+    console.log("goals", goals);
+
 
     const [workoutweekly, setWorkoutweekly] = useState<string>("");
     const [workouttypically, setWorkouttypically] = useState<string>("");
@@ -182,6 +184,23 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     const SignUp = (name: string, email: string, password: string) => {
         console.log("measurement", measurementSystem);
+        console.log("name", name);
+        console.log("email", email);
+        console.log("password", password)
+        console.log("height", height);
+        console.log("gender", gender);
+        console.log("goals", typeof (goals));
+        console.log("workoutweekly", workoutweekly);
+        console.log("workouttypically", workouttypically);
+        console.log("selectedDate", selectedDate);
+        console.log("weight", weight);
+
+
+
+
+
+
+
 
         setLoading(true);
         axios.post(`https://qa-ns-api.debutinfotech.in/api/v4.2.0/signup`, {
@@ -192,7 +211,7 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
             password: password,
             measurementSystem: measurementSystem,
             height: height,
-            age: "",
+            age: "16",
             gender: gender,
             weight: weight,
             trainingGoal: goals,
@@ -202,8 +221,13 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
             referralCode: "",
             dob: selectedDate
         })
+
             .then((res) => {
+
+
                 const result = JSON.parse(res.config.data);
+                console.log(res.request, "ddd");
+
                 setDatas(result);
                 setStatus(res.data.status);
                 if (res.data.status == "success") {

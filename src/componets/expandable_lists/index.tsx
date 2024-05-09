@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-type BaseTextInput = {
+type ExpandableListProps = {
     label: string;
     presshandler: () => void;
     isPressed?: boolean;
@@ -8,7 +8,7 @@ type BaseTextInput = {
 
 }
 
-const BaseTextInput = (props: BaseTextInput) => {
+const ExpandableList = (props: ExpandableListProps) => {
     return (
         <TouchableOpacity style={{ width: 343, height: 48, borderWidth: 2, alignSelf: "center", marginTop: 30, flexDirection: "row", justifyContent: "center", borderRadius: 20, borderColor: props.isPressed ? "black" : "#ededed", alignItems: 'center' }} onPress={props.presshandler}>
             <Text style={{ fontSize: 16, color: "black", marginLeft: 10 }}>{props.label}</Text>
@@ -19,4 +19,4 @@ const BaseTextInput = (props: BaseTextInput) => {
     )
 }
 
-export default BaseTextInput
+export default ExpandableList

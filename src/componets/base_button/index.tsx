@@ -15,25 +15,26 @@ type BaseButtonProps = {
 
 const BaseButton = (props: BaseButtonProps) => {
     return (
-        <View style={{ justifyContent: "flex-end", flex: 1 }}>
-            <TouchableOpacity style={{
-                width: props.width,
-                height: props.height,
-                top: props.top,
-                left: props.left,
-                // borderWidth: 2,
-                backgroundColor: props.backkgroundColor,
-                borderRadius: props.borderRadius,
-                bottom: props.bottom
+
+        <TouchableOpacity style={{
+            width: props.width,
+            height: props.height,
+            top: props.top,
+            left: props.left,
+            // borderWidth: 2,
+            backgroundColor: props.backkgroundColor,
+            borderRadius: props.borderRadius,
+            bottom: props.bottom,
 
 
 
-            }} onPress={props.pressHandler}>
-                <Text style={{ color: props.color, fontSize: 16, paddingTop: 12, fontWeight: "600", fontFamily: "Space Grotesk", alignSelf: "center" }}>
-                    {props.label}
-                </Text>
-            </TouchableOpacity>
-        </View>
+
+        }} onPress={props.pressHandler}>
+            <Text style={{ color: props.color, fontSize: 16, paddingTop: 12, fontWeight: "600", fontFamily: "Space Grotesk", alignSelf: "center" }}>
+                {props.label}
+            </Text>
+        </TouchableOpacity>
+
     )
 }
 
