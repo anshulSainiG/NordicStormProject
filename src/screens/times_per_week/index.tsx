@@ -62,7 +62,7 @@ const TimesPerWeek = (props: NativeStackScreenProps<RootstackParamList, "TimesPe
                 </View>
 
                 <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
-                    <BaseButton width={200} height={48} backkgroundColor={'black'} borderRadius={27} label={"Next"} color={"white"} pressHandler={handler} bottom={24}
+                    <BaseButton width={200} height={48} backgroundColor={'black'} borderRadius={27} label={"Next"} color={"white"} pressHandler={handler} bottom={24}
 
 
                     />

@@ -13,7 +13,7 @@ const SelectYourTrainingGoals = (props: NativeStackScreenProps<RootstackParamLis
     const [selectedOption, setSelectedOption] = useState<number | null>(null);
     console.log("selectedGoals", selectedGoals);
 
-    handleGoals(selectedGoals.join(""))
+    handleGoals(selectedGoals.join(","))
 
     const goals = [
         { id: 12, title: "Loose Weight" },
@@ -75,7 +75,7 @@ const SelectYourTrainingGoals = (props: NativeStackScreenProps<RootstackParamLis
                     <BaseButton
                         width={200}
                         height={54}
-                        backkgroundColor={'black'}
+                        backgroundColor={'black'}
                         borderRadius={27}
                         label={"Next"}
                         color={"white"}

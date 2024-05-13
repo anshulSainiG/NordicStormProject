@@ -189,7 +189,7 @@ export const Provider: React.FC<{ children: ReactNode }> = ({ children }) => {
         console.log("password", password)
         console.log("height", height);
         console.log("gender", gender);
-        console.log("goals", typeof (goals));
+        console.log("goals+++++++++++++++++++++++++++++++++", goals);
         console.log("workoutweekly", workoutweekly);
         console.log("workouttypically", workouttypically);
         console.log("selectedDate", selectedDate);

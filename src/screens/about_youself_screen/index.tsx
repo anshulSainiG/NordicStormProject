@@ -99,7 +99,7 @@ const AboutYourSelf = (props: NativeStackScreenProps<RootstackParamList, "AboutY
 
                 <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
 
-                    <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={30} label={"Next"} color={"white"} pressHandler={handler} bottom={24} />
+                    <BaseButton width={200} height={54} backgroundColor={'black'} borderRadius={30} label={"Next"} color={"white"} pressHandler={handler} bottom={24} />
                 </View>
 
             </View>

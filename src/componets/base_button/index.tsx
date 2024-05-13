@@ -1,41 +1,41 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+
 type BaseButtonProps = {
     width: number;
     height: number;
-    backkgroundColor: string;
-    borderRadius: number
-    label: string,
-    left?: number;
+    backgroundColor: string;
+    borderRadius: number;
+    label: string;
+    buttonDisable?: boolean;
     color: string;
     pressHandler: () => void;
-    top?: number
-    bottom?: number
-}
+    bottom: number
+};
 
 const BaseButton = (props: BaseButtonProps) => {
+    const buttonColor = props.buttonDisable ? "gray" : props.backgroundColor;
+
     return (
+        <TouchableOpacity
+            style={{
+                width: props.width,
+                height: props.height,
+                backgroundColor: buttonColor,
+                borderRadius: props.borderRadius,
+                alignItems: "center",
+                justifyContent: "center",
+                bottom: props.bottom
 
-        <TouchableOpacity style={{
-            width: props.width,
-            height: props.height,
-            top: props.top,
-            left: props.left,
-            // borderWidth: 2,
-            backgroundColor: props.backkgroundColor,
-            borderRadius: props.borderRadius,
-            bottom: props.bottom,
-
-
-
-
-        }} onPress={props.pressHandler}>
-            <Text style={{ color: props.color, fontSize: 16, paddingTop: 12, fontWeight: "600", fontFamily: "Space Grotesk", alignSelf: "center" }}>
+            }}
+            disabled={props.buttonDisable}
+            onPress={props.pressHandler}
+        >
+            <Text style={{ color: props.color, fontSize: 16, fontWeight: "600", fontFamily: "Space Grotesk" }}>
                 {props.label}
             </Text>
         </TouchableOpacity>
+    );
+};
 
-    )
-}
-
-export default BaseButton
+export default BaseButton;

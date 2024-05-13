@@ -5,7 +5,6 @@ import BaseButton from '../../componets/base_button';
 import PhoneTextField from '../../componets/phone_text_field';
 import { useRoute } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import BaseText from '../../componets/base_text';
 import BaseTextInput from '../../componets/expandable_lists';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootstackParamList } from '../../navigation';
@@ -13,8 +12,8 @@ import { AppContext } from '../../context';
 import ExpandableList from '../../componets/expandable_lists';
 
 const TypicallyWorkout = (props: NativeStackScreenProps<RootstackParamList, "TypicallyWorkout">) => {
-    const { handleWorkoutTypically, SignUp, names, emails, passwords, measurementSystem, gender, height, selectedDate, weight, workoutweekly,
-        status } = useContext(AppContext)
+    const { handleWorkoutTypically, SignUp, names, emails, passwords, measurementSystem, gender, height, selectedDate, weight, workoutweekly, goals
+        , status } = useContext(AppContext)
     console.log("meas===>", measurementSystem);
     console.log("=========>", status);
 
@@ -27,6 +26,8 @@ const TypicallyWorkout = (props: NativeStackScreenProps<RootstackParamList, "Typ
     const [selectedGoals, setSelectedGoals] = useState<string[]>([])
     const [isPressed, setisPresses] = useState<string>("")
     console.log("console", status);
+    console.log("goals", goals);
+
 
     const WorkoutWeekly = ["Less than 15 mins", "15-30 mins", "More than 30 mins"]
 
@@ -39,7 +40,7 @@ const TypicallyWorkout = (props: NativeStackScreenProps<RootstackParamList, "Typ
     };
     const handler = () => {
         if (isSelected) {
-            SignUp(names, emails, passwords, measurementSystem, gender, height, selectedDate, weight, workoutweekly)
+            SignUp(names, emails, passwords, measurementSystem, gender, height, selectedDate, weight, workoutweekly, goals)
 
             if (status == "success") {
                 props.navigation.navigate("Dashboardscreen");
@@ -75,7 +76,7 @@ const TypicallyWorkout = (props: NativeStackScreenProps<RootstackParamList, "Typ
 
 
                 <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
-                    <BaseButton width={200} height={48} backkgroundColor={'black'} borderRadius={27} label={"Get Started"} color={"white"} pressHandler={handler} bottom={24} />
+                    <BaseButton width={200} height={48} backgroundColor={'black'} borderRadius={27} label={"Get Started"} color={"white"} pressHandler={handler} bottom={24} />
 
 
                 </View>

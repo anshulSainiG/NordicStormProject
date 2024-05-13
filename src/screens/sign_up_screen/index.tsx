@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, ImageBackground, Alert } from 'react-native';
 
 import BaseButton from '../../componets/base_button';
@@ -16,10 +16,17 @@ const Signup = (props: NativeStackScreenProps<RootstackParamList, "Signup">) => 
     const [namehandler, setNamehandler] = React.useState<boolean>(false);
     const [emailhandler, setEmailhandler] = React.useState<boolean>(false);
     const { names, nameHandler, emailHandler, emails, passwordHandler, passwords } = useContext(AppContext);
+    const [buttonDisable, setButtonDisable] = React.useState(true)
 
     const SecureHandler = () => {
         setSecureText((prevSecureText) => !prevSecureText);
     };
+
+
+    useEffect(() => {
+        setButtonDisable(names.length === 0 || passwords.length === 0 || emails.length === 0)
+
+    }, [names, passwords, emails])
 
     const nameValidation = (text: string) => {
         if (text.length === 1) {
@@ -39,7 +46,7 @@ const Signup = (props: NativeStackScreenProps<RootstackParamList, "Signup">) => 
 
         if (text.length > 0) {
             if (!EMAIL_REGEX.test(text)) {
-                setEmailValidation('Invalid email format');
+                setEmailValidation('Email must be in a valid email format(e.g.,username@gmail.com or username12@gmail.com).Please try again');
             } else {
                 setEmailValidation('');
             }
@@ -104,26 +111,17 @@ const Signup = (props: NativeStackScreenProps<RootstackParamList, "Signup">) => 
                     <View style={{ height: 20 }}></View>
                 </View>
                 <View style={{ alignItems: "center", flex: 1, justifyContent: "flex-end" }}>
-                    <BaseButton width={200} height={54} backkgroundColor={'black'} borderRadius={27} label={"Sign Up"} bottom={68} color={"white"}
+                    <BaseButton width={200} height={54} backgroundColor={'black'} borderRadius={27} label={"Sign Up"} bottom={68} color={"white"} buttonDisable={buttonDisable}
                         pressHandler={() => {
                             if (namehandler && PasswordValidation(passwords) && emailvalidation === "" && emailhandler) {
+                                console.log("yes");
+
 
                                 props.navigation.navigate("AboutYourSelf", {
                                     name: names
                                 });
                             }
-                            else if (names.length === 0) {
-                                Alert.alert("Please enter name");
-                            }
-                            else if (passwords.length === 0) {
-                                Alert.alert("Please enter password");
-                            }
-                            else if (emails.length == 0) {
-                                Alert.alert("enter the email")
-                            }
-                            else {
-                                Alert.alert("Enter the valid information");
-                            }
+
                         }}
                     />
                 </View>

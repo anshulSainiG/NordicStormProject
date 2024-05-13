@@ -11,11 +11,10 @@ const IntialScreen = (props: NativeStackScreenProps<RootstackParamList, "IntialS
             <View style={{ height: "90%", alignItems: 'center', justifyContent: "center" }}>
                 <Image source={require("../../assest/images/group.png")} />
             </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-around", flex: 1 }}>
-                <BaseButton width={154} height={54} backkgroundColor={'white'} borderRadius={27} label={"Log in"} color={"black"} pressHandler={() => props.navigation.navigate("Login")} />
+            <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+                <BaseButton width={154} height={54} backgroundColor={'white'} borderRadius={27} label={"Log in"} color={"black"} pressHandler={() => props.navigation.navigate("Login")} bottom={24} />
                 {/* <View style={{ width: 19 }}></View> */}
-                <BaseButton width={154} height={54} backkgroundColor={'black'} borderRadius={27} label={"Sign Up"} color={"white"} pressHandler={() => props.navigation.navigate("Signup")}
-                />
+                <BaseButton width={154} height={54} backgroundColor={'black'} borderRadius={27} label={"Sign Up"} color={"white"} pressHandler={() => props.navigation.navigate("Signup")} bottom={24} />
             </View>
         </ImageBackground>
     )
